@@ -9,7 +9,10 @@ function App() {
         <p>
           Click a Photograph of the Product
         </p>
-        <input capture="environment" type='file' accept="image/*" />
+        <label for="file-upload" className='Custom-file-upload'>
+          Upload Photo
+        </label>
+        <input id="file-upload" capture="environment" type='file' accept="image/*" />
       </header>
     </div>
   );
