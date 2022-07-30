@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# EcoTrack
+
+## A solution that can help
+
+1. Track the supply chain and reverse logistics of products.
+2. Calculate its negative environmental and social impact across the value chain.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ecotrack-dev-170620-authRole",
+      "UnauthRoleArn": "arn:aws:iam::511905775847:role/amplify-ecotrack-dev-170620-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::511905775847:role/amplify-ecotrack-dev-170620-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-ecotrack-dev-170620-deployment",
+      "UnauthRoleName": "amplify-ecotrack-dev-170620-unauthRole",
+      "StackName": "amplify-ecotrack-dev-170620",
+      "StackId": "arn:aws:cloudformation:ap-south-1:511905775847:stack/amplify-ecotrack-dev-170620/d7e35040-0ffb-11ed-b8f1-0661b2ca6e2e",
+      "AmplifyAppId": "d3de29agwznipl"
+    }
+  }
+}
