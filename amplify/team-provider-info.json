@@ -10,6 +10,14 @@
       "StackName": "amplify-ecotrack-dev-170620",
       "StackId": "arn:aws:cloudformation:ap-south-1:511905775847:stack/amplify-ecotrack-dev-170620/d7e35040-0ffb-11ed-b8f1-0661b2ca6e2e",
       "AmplifyAppId": "d3de29agwznipl"
+    },
+    "categories": {
+      "auth": {
+        "ecotrack84b52c6e": {},
+        "true": {},
+        "ecotrack9d758664": {},
+        "ecotrack6e8290e2": {}
+      }
     }
   }
 }
