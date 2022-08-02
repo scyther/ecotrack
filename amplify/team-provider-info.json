@@ -1,0 +1,21 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ecotrackbackend-staging-114513-authRole",
+      "UnauthRoleArn": "arn:aws:iam::511905775847:role/amplify-ecotrackbackend-staging-114513-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::511905775847:role/amplify-ecotrackbackend-staging-114513-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-ecotrackbackend-staging-114513-deployment",
+      "UnauthRoleName": "amplify-ecotrackbackend-staging-114513-unauthRole",
+      "StackName": "amplify-ecotrackbackend-staging-114513",
+      "StackId": "arn:aws:cloudformation:ap-south-1:511905775847:stack/amplify-ecotrackbackend-staging-114513/91ee77e0-1258-11ed-9f95-02e58afa284a",
+      "AmplifyAppId": "d2drvdq24spywd"
+    },
+    "categories": {
+      "auth": {
+        "ecotrackbackendba77ece1": {},
+        "ecotrackbackende69b3052": {}
+      }
+    }
+  }
+}

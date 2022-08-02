@@ -7,6 +7,7 @@ import {
 
 import Home from "./routes/Home";
 import Login from "./routes/Login";
+import Product from "./routes/Product";
 
 import { Amplify } from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -17,8 +18,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/product" element={<Product />} />
       </Routes>
     </Router>
   );
