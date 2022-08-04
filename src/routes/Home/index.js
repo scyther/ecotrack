@@ -57,7 +57,7 @@ const Home = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Click a Photograph of the Product</p>
+        <p>Click a Photo of the Product</p>
         <label htmlFor="file-upload" className="Custom-file-upload">
           Upload Photo
         </label>
