@@ -22,5 +22,11 @@ export type AmplifyDependentResourcesAttributes = {
             "BucketName": "string",
             "Region": "string"
         }
+    },
+    "predictions": {
+        "identifyProduct": {
+            "region": "string",
+            "type": "string"
+        }
     }
 }

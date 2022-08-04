@@ -2,11 +2,12 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateProduct = /* GraphQL */ `
-  subscription OnCreateProduct {
-    onCreateProduct {
+  subscription OnCreateProduct($filter: ModelSubscriptionProductFilterInput) {
+    onCreateProduct(filter: $filter) {
       id
       name
       description
+      image
       createdAt
       updatedAt
       _version
@@ -16,11 +17,12 @@ export const onCreateProduct = /* GraphQL */ `
   }
 `;
 export const onUpdateProduct = /* GraphQL */ `
-  subscription OnUpdateProduct {
-    onUpdateProduct {
+  subscription OnUpdateProduct($filter: ModelSubscriptionProductFilterInput) {
+    onUpdateProduct(filter: $filter) {
       id
       name
       description
+      image
       createdAt
       updatedAt
       _version
@@ -30,11 +32,12 @@ export const onUpdateProduct = /* GraphQL */ `
   }
 `;
 export const onDeleteProduct = /* GraphQL */ `
-  subscription OnDeleteProduct {
-    onDeleteProduct {
+  subscription OnDeleteProduct($filter: ModelSubscriptionProductFilterInput) {
+    onDeleteProduct(filter: $filter) {
       id
       name
       description
+      image
       createdAt
       updatedAt
       _version

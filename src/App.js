@@ -10,8 +10,12 @@ import Login from "./routes/Login";
 import Product from "./routes/Product";
 
 import { Amplify } from 'aws-amplify';
+import {
+  AmazonAIPredictionsProvider
+} from '@aws-amplify/predictions';
 import awsconfig from './aws-exports';
 
+Amplify.addPluggable(new AmazonAIPredictionsProvider())
 Amplify.configure(awsconfig);
 
 function App() {

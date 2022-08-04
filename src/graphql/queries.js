@@ -7,6 +7,7 @@ export const getProduct = /* GraphQL */ `
       id
       name
       description
+      image
       createdAt
       updatedAt
       _version
@@ -26,6 +27,7 @@ export const listProducts = /* GraphQL */ `
         id
         name
         description
+        image
         createdAt
         updatedAt
         _version
@@ -54,6 +56,7 @@ export const syncProducts = /* GraphQL */ `
         id
         name
         description
+        image
         createdAt
         updatedAt
         _version

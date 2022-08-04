@@ -12,6 +12,7 @@ export declare class Product {
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
+  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Product, ProductMetaData>);
