@@ -22,19 +22,11 @@ const Home = () => {
   //Predict Objects
   const PredictObjects = async (e) => {
     const key = await uploadImage(e);
-    const s3URL = await Storage.get(key, { level: "public" });
-    console.log(s3URL);
-    console.log(key);
-    // if (!e.target.files[0]) return;
-    // const {
-    //   target: { files },
-    // } = e;
-    // const [file] = [files] || [];
     setshowLoader(true);
     await Predictions.identify({
       labels: {
         source: {
-          key: s3URL,
+          key: key,
           level: 'public',
           // identityId: Auth.Credentials._config.identityPoolId
         },
@@ -87,9 +79,13 @@ const Home = () => {
           <View>
             {labels.find((label) => {
               return isPlasticBottle(label.name);
-            }) && (
+            }) ? (
               <View>
                 <Badge>Plastic Bottle</Badge>
+              </View>
+            ) : (
+              <View>
+                <Badge>Not able to Identify Waste</Badge>
               </View>
             )}
           </View>
