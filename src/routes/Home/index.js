@@ -1,58 +1,59 @@
-import { Loader } from "@aws-amplify/ui-react";
-import { Predictions, Storage } from "aws-amplify";
+import { Badge, Loader, View } from "@aws-amplify/ui-react";
+import {  Predictions, Storage } from "aws-amplify";
 import { useState } from "react";
 import logo from "../../logo.svg";
 import "./Home.css";
 
 const Home = () => {
   const [showLoader, setshowLoader] = useState(false);
-  const [percentage, setPercentage] = useState(0);
-
-  //Image Upload
-  // const uploadImage = async (e) => {
-  //   if (!e.target.files[0]) return;
-  //   const image = e.target.files[0];
-  //   setshowLoader(true);
-  //   const {key} = await Storage.put(image.name, image, {
-  //     level: "private",
-  //     resumable: true,
-  //     progressCallback(progress) {
-  //       console.log(progress)
-  //       setPercentage(Math.floor((progress.loaded / progress.total) * 100));
-  //     },
-  //     completeCallback: (event) => {
-  //       console.log(`Successfully uploaded ${event.key}`);
-  //       setPercentage(0);
-  //       setshowLoader(false);
-  //     },
-  //   });
-  //   return key
-  // };
+  const [labels, setLabels] = useState([]);
+  // Image Upload
+  const uploadImage = async (e) => {
+    if (!e.target.files[0]) return;
+    const image = e.target.files[0];
+    setshowLoader(true);
+    const { key } = await Storage.put(image.name, image, {
+      level: "public",
+    });
+    console.log(key);
+    return key;
+  };
 
   //Predict Objects
   const PredictObjects = async (e) => {
-    if (!e.target.files[0]) return;
-    const { target: { files } } = e;
-    const [file,] = files || [];
+    const key = await uploadImage(e);
+    const s3URL = await Storage.get(key, { level: "public" });
+    console.log(s3URL);
+    console.log(key);
+    // if (!e.target.files[0]) return;
+    // const {
+    //   target: { files },
+    // } = e;
+    // const [file] = [files] || [];
     setshowLoader(true);
-    Predictions.identify({
+    await Predictions.identify({
       labels: {
-          source: {
-              file,
-          },
-          type: "ALL"
-      }
-  })
-  .then(response => {
-      const { labels } = response;
-      const { unsafe } = response; // boolean 
-      console.log(labels,unsafe)
-      setshowLoader(false);
+        source: {
+          key: s3URL,
+          level: 'public',
+          // identityId: Auth.Credentials._config.identityPoolId
+        },
+        type: "LABELS",
+      },
+    })
+      .then((response) => {
+        const { labels } = response;
+        console.log(labels);
+        setLabels(labels);
+        setshowLoader(false);
+      })
+      .catch((err) => console.log({ err }));
+  };
 
-  })
-  .catch(err => console.log({ err }));
-  }
-
+  const isPlasticBottle = (label) => {
+    if (label === "Plastic" || label === "Bottle" || label === "Pop Bottle")
+      return true;
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -68,6 +69,8 @@ const Home = () => {
           accept="image/*"
           onChange={PredictObjects}
         />
+
+        {/* show Loader */}
         {showLoader && (
           <div className="loader">
             <Loader
@@ -77,6 +80,19 @@ const Home = () => {
               width={300}
             />
           </div>
+        )}
+
+        {/* show predicted labels */}
+        {labels.length !== 0 && (
+          <View>
+            {labels.find((label) => {
+              return isPlasticBottle(label.name);
+            }) && (
+              <View>
+                <Badge>Plastic Bottle</Badge>
+              </View>
+            )}
+          </View>
         )}
       </header>
     </div>
