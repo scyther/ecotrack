@@ -1,5 +1,5 @@
 import { Badge, Loader, View } from "@aws-amplify/ui-react";
-import {  Predictions, Storage } from "aws-amplify";
+import { Predictions, Storage } from "aws-amplify";
 import { useState } from "react";
 import logo from "../../logo.svg";
 import "./Home.css";
@@ -27,7 +27,7 @@ const Home = () => {
       labels: {
         source: {
           key: key,
-          level: 'public',
+          level: "public",
           // identityId: Auth.Credentials._config.identityPoolId
         },
         type: "LABELS",
@@ -36,7 +36,10 @@ const Home = () => {
       .then((response) => {
         const { labels } = response;
         console.log(labels);
-        setLabels(labels);
+        let labelList = labels.map((label) => label.name);
+        console.log(labelList);
+
+        setLabels(labelList);
         setshowLoader(false);
       })
       .catch((err) => console.log({ err }));
@@ -46,11 +49,26 @@ const Home = () => {
     if (label === "Plastic" || label === "Bottle" || label === "Pop Bottle")
       return true;
   };
+
+  const isType = (label) => {
+    switch (label) {
+      case label === "Plastic" || label === "Bottle" || label === "Pop Bottle":
+        return "Plastic Bottle";
+
+      default:
+        return false;
+    }
+  };
+  //handleClick
+
+  const handleClick = (e) => {
+    console.log(e);
+  };
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Click a Photo of the Product</p>
+        <p>Click a Image of the Product</p>
         <label htmlFor="file-upload" className="Custom-file-upload">
           Upload Photo
         </label>
@@ -78,16 +96,14 @@ const Home = () => {
         {labels.length !== 0 && (
           <View>
             {labels.find((label) => {
-              return isPlasticBottle(label.name);
-            }) ? (
-              <View>
-                <Badge>Plastic Bottle</Badge>
-              </View>
-            ) : (
-              <View>
-                <Badge>Not able to Identify Waste</Badge>
-              </View>
-            )}
+              return (
+                <View>
+                  <Badge variation="success" onClick={handleClick}>
+                    {isType(label)}
+                  </Badge>
+                </View>
+              );
+            })}
           </View>
         )}
       </header>
