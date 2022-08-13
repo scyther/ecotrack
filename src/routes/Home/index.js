@@ -66,7 +66,7 @@ const Home = () => {
   };
   return (
     <div className="App">
-      <header className="App-header">
+      <body className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Click a Image of the Product</p>
         <label htmlFor="file-upload" className="Custom-file-upload">
@@ -106,7 +106,7 @@ const Home = () => {
             })}
           </View>
         )}
-      </header>
+      </body>
     </div>
   );
 };
