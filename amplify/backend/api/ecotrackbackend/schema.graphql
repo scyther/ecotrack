@@ -1,7 +1,23 @@
-type Product @model @auth(rules: [{allow: public}]) {
+type Locations @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Product: Product @hasOne
+  geoCordinates: String
+  image: AWSURL
+  picked: Boolean
+}
+
+type ConsumerOptions @model @auth(rules: [{allow: public}, {allow: groups, groups: ["guest"], operations: [read]}]) {
+  id: ID!
+  name: String
+  description: String
+  products: [Product] @manyToMany(relationName: "ProductConsumerOptions")
+}
+
+type Product @model @auth(rules: [{allow: public}, {allow: groups, groups: ["guest"], operations: [read]}]) {
   id: ID!
   name: String!
   description: String
-  image: String
+  ConsumerOptions: [ConsumerOptions] @manyToMany(relationName: "ProductConsumerOptions")
+  consumerOption: [AWSJSON!]!
 }
  

@@ -1,56 +1,114 @@
-import React, { useState } from "react";
-import ml5 from "ml5";
+import { Badge, Loader, View } from "@aws-amplify/ui-react";
+import { Predictions, Storage } from "aws-amplify";
+import { useState } from "react";
 import logo from "../../logo.svg";
-import { Button } from "@aws-amplify/ui-react";
 
-const Homie = () => {
-  const [predictionss, setPredictionss] = useState([]);
 
-  const PredictObjects = (e) => {
+const Home = () => {
+  const [showLoader, setshowLoader] = useState(false);
+  const [labels, setLabels] = useState([]);
+  // Image Upload
+  const uploadImage = async (e) => {
     if (!e.target.files[0]) return;
-    const file = e.target.files[0];
-    const image = new Image(500, 500);
-    image.src = URL.createObjectURL(file);
-    const classifier = ml5.imageClassifier(
-      "https://teachablemachine.withgoogle.com/models/kjbL88QHM/",
-      () => {
-        console.log("Model Loaded");
-      }
-    );
-    classifier.classify(image, 8, (err, results) => {
-      console.log(results);
-      setPredictionss(results);
-      console.log(err);
+    const image = e.target.files[0];
+    setshowLoader(true);
+    const { key } = await Storage.put(image.name, image, {
+      level: "public",
     });
-    image.onload = function () {
-      console.log("Image loaded");
-    };
+    console.log(key);
+    return key;
   };
 
+  //Predict Objects
+  const PredictObjects = async (e) => {
+    const key = await uploadImage(e);
+    setshowLoader(true);
+    await Predictions.identify({
+      labels: {
+        source: {
+          key: key,
+          level: "public",
+          // identityId: Auth.Credentials._config.identityPoolId
+        },
+        type: "LABELS",
+      },
+    })
+      .then((response) => {
+        const { labels } = response;
+        console.log(labels);
+        let labelList = labels.map((label) => label.name);
+        console.log(labelList);
+
+        setLabels(labelList);
+        setshowLoader(false);
+      })
+      .catch((err) => console.log({ err }));
+  };
+
+  // const isPlasticBottle = (label) => {
+  //   if (label === "Plastic" || label === "Bottle" || label === "Pop Bottle")
+  //     return true;
+  // };
+
+  const isType = (label) => {
+    switch (label) {
+      case label === "Plastic" || label === "Bottle" || label === "Pop Bottle":
+        return "Plastic Bottle";
+
+      default:
+        return false;
+    }
+  };
+  //handleClick
+
+  const handleClick = (e) => {
+    console.log(e);
+  };
   return (
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Click a Image of the Product</p>
-      <label htmlFor="file-upload" className="Custom-file-upload">
-        Upload Photo
-      </label>
-      <input
-        id="file-upload"
-        capture="environment"
-        type="file"
-        accept="image/*"
-        onChange={PredictObjects}
-      />
-      <Button variation="primary" marginTop="20px">
-        {predictionss[0].label} ({Math.floor(predictionss[0].confidence * 100)}{" "}
-        %)
-      </Button>
-      <Button variation="primary" marginTop="20px">
-        {predictionss[1].label} ({Math.floor(predictionss[1].confidence * 100)}{" "}
-        %)
-      </Button>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Click a Image of the Product</p>
+        <label htmlFor="file-upload" className="Custom-file-upload">
+          Upload Photo
+        </label>
+        <input
+          id="file-upload"
+          capture="environment"
+          type="file"
+          accept="image/*"
+          onChange={PredictObjects}
+        />
+
+        {/* show Loader */}
+        {showLoader && (
+          <div className="loader">
+            <Loader
+              variation="linear"
+              // percentage={percentage}
+              // isDeterminate
+              width={300}
+            />
+          </div>
+        )}
+
+        {/* show predicted labels */}
+        {labels.length !== 0 && (
+          <View>
+            {labels.find((label) => {
+              return (
+                <View>
+                  <Badge variation="success" onClick={handleClick}>
+                    {isType(label)}
+                  </Badge>
+                </View>
+              );
+            })}
+          </View>
+        )}
+      </header>
     </div>
   );
 };
 
-export default Homie;
+export default Home;
