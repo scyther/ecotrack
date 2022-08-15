@@ -3,7 +3,6 @@
   "serviceConfiguration": {
     "apiName": "ecotrackbackend",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-984fc6c4-adce-4b06-979b-5d5e08b3dc95/amplify/backend/api/ecotrackbackend/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
@@ -12,6 +11,10 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authecotrackbackende69b3052"
       }
     ],
     "conflictResolution": {

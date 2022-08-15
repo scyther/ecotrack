@@ -1,114 +1,88 @@
-import { Badge, Loader, View } from "@aws-amplify/ui-react";
-import { Predictions, Storage } from "aws-amplify";
-import { useState } from "react";
+import React, { useState } from "react";
+import ml5 from "ml5";
 import logo from "../../logo.svg";
+import { Button, Loader, ButtonGroup } from "@aws-amplify/ui-react";
+import { API, graphqlOperation } from "aws-amplify";
+import { getProductID } from "../../graphql/queries";
+import { useNavigate } from 'react-router-dom'
 import "./Home.css";
 
-const Home = () => {
-  const [showLoader, setshowLoader] = useState(false);
-  const [labels, setLabels] = useState([]);
-  // Image Upload
-  const uploadImage = async (e) => {
+const Homie = () => {
+  const [showLoader, setShowLoader] = useState(false);
+  const [predictionss, setPredictionss] = useState([]);
+  const navigate = useNavigate();
+
+  const PredictObjects = (e) => {
+    setShowLoader(true);
     if (!e.target.files[0]) return;
-    const image = e.target.files[0];
-    setshowLoader(true);
-    const { key } = await Storage.put(image.name, image, {
-      level: "public",
+    const file = e.target.files[0];
+    const image = new Image(500, 500);
+    image.src = URL.createObjectURL(file);
+    const classifier = ml5.imageClassifier(
+      "https://teachablemachine.withgoogle.com/models/kjbL88QHM/",
+      () => {
+        console.log("Model Loaded");
+      }
+    );
+    classifier.classify(image, 8, (err, results) => {
+      console.log(results);
+      setPredictionss(results);
+      console.log(err);
+      setShowLoader(false);
     });
-    console.log(key);
-    return key;
+    image.onload = function () {
+      console.log("Image loaded");
+    };
   };
 
-  //Predict Objects
-  const PredictObjects = async (e) => {
-    const key = await uploadImage(e);
-    setshowLoader(true);
-    await Predictions.identify({
-      labels: {
-        source: {
-          key: key,
-          level: "public",
-          // identityId: Auth.Credentials._config.identityPoolId
-        },
-        type: "LABELS",
-      },
-    })
-      .then((response) => {
-        const { labels } = response;
-        console.log(labels);
-        let labelList = labels.map((label) => label.name);
-        console.log(labelList);
-
-        setLabels(labelList);
-        setshowLoader(false);
-      })
-      .catch((err) => console.log({ err }));
+  const redirectToProductID = async (e) => {
+    let productName = e.target.name;
+    console.log(e.target.name);
+    const apiData = await API.graphql(
+      graphqlOperation(getProductID, { eq: productName })
+    );
+    let productID = apiData.data.listProducts.items[0].id;
+    navigate(`/product/${productID}`)
   };
 
-  const isPlasticBottle = (label) => {
-    if (label === "Plastic" || label === "Bottle" || label === "Pop Bottle")
-      return true;
-  };
-
-  const isType = (label) => {
-    switch (label) {
-      case label === "Plastic" || label === "Bottle" || label === "Pop Bottle":
-        return "Plastic Bottle";
-
-      default:
-        return false;
-    }
-  };
-  //handleClick
-
-  const handleClick = (e) => {
-    console.log(e);
-  };
   return (
-    <div className="App">
-      <body className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Click a Image of the Product</p>
-        <label htmlFor="file-upload" className="Custom-file-upload">
-          Upload Photo
-        </label>
-        <input
-          id="file-upload"
-          capture="environment"
-          type="file"
-          accept="image/*"
-          onChange={PredictObjects}
-        />
-
-        {/* show Loader */}
-        {showLoader && (
-          <div className="loader">
-            <Loader
-              variation="linear"
-              // percentage={percentage}
-              // isDeterminate
-              width={300}
-            />
-          </div>
-        )}
-
-        {/* show predicted labels */}
-        {labels.length !== 0 && (
-          <View>
-            {labels.find((label) => {
-              return (
-                <View>
-                  <Badge variation="success" onClick={handleClick}>
-                    {isType(label)}
-                  </Badge>
-                </View>
-              );
-            })}
-          </View>
-        )}
-      </body>
+    <div className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>Click a Image of the Product</p>
+      <label htmlFor="file-upload" className="Custom-file-upload">
+        Upload Photo
+      </label>
+      <input
+        id="file-upload"
+        capture="environment"
+        type="file"
+        accept="image/*"
+        onChange={PredictObjects}
+      />
+      {showLoader && <Loader variation="linear" width={300} />}
+      {Boolean(predictionss.length) && (
+        <ButtonGroup direction="column" variation="primary">
+          <Button
+            name={predictionss[0].label}
+            variation="primary"
+            marginTop="20px"
+            onClick={redirectToProductID}
+          >
+            {predictionss[0].label} (
+            {Math.floor(predictionss[0].confidence * 100)} %)
+          </Button>
+          <Button
+            name={predictionss[1].label}
+            variation="primary"
+            onClick={redirectToProductID}
+          >
+            {predictionss[1].label} (
+            {Math.floor(predictionss[1].confidence * 100)} %)
+          </Button>
+        </ButtonGroup>
+      )}
     </div>
   );
 };
 
-export default Home;
+export default Homie;
