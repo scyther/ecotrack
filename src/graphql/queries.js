@@ -166,15 +166,13 @@ export const getProduct = /* GraphQL */ `
       name
       description
       ConsumerOptions {
-        nextToken
-        startedAt
+        items {
+          consumerOptions {
+            name
+            description
+          }
+        }
       }
-      consumerOption
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

@@ -1,14 +1,16 @@
 .cardComponent{
-    border: solid
+    background-color: #CAD5E2
 }
 .App{
     background-color: #282c34;
-}
-
-h1{
-    color: white
+    height: 100vh;
+    padding: 15px
 }
 
 .pImage{
-    border-radius: 80px
+    border-radius: 5px
+}
+
+.scrollView::-webkit-scrollbar{
+  display : none
 }

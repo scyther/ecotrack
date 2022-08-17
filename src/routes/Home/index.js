@@ -10,6 +10,7 @@ import "./Home.css";
 const Homie = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [predictionss, setPredictionss] = useState([]);
+  const [imageURL, setimageURL] = useState("")
   const navigate = useNavigate();
 
   const PredictObjects = (e) => {
@@ -18,6 +19,7 @@ const Homie = () => {
     const file = e.target.files[0];
     const image = new Image(500, 500);
     image.src = URL.createObjectURL(file);
+    setimageURL(image.src)
     const classifier = ml5.imageClassifier(
       "https://teachablemachine.withgoogle.com/models/kjbL88QHM/",
       () => {
@@ -42,7 +44,7 @@ const Homie = () => {
       graphqlOperation(getProductID, { eq: productName })
     );
     let productID = apiData.data.listProducts.items[0].id;
-    navigate(`/product/${productID}`)
+    navigate(`/product/${productID}`,{state: {imageURL: imageURL}})
   };
 
   return (
