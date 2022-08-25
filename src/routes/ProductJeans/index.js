@@ -19,9 +19,11 @@ const ProductJeans = () => {
   const { imageURL } = state;
 
   const getNearbyAreas = async (keyword) => {
-         const response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&keyword=${keyword}&key=AIzaSyCX7inrmE2tWAs7_7l9m9ASN3lHXtML7kw`)
-  cin
-        } 
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&keyword=${keyword}&key=AIzaSyCX7inrmE2tWAs7_7l9m9ASN3lHXtML7kw`
+    );
+    console.log(response)
+  };
   return (
     <div className="App">
       <ScrollView
@@ -70,11 +72,13 @@ const ProductJeans = () => {
                   <Text as="span">
                     You can post an advertisement to sell it on OLX.
                   </Text>
-                  <a href="https://www.olx.in/" target="_blank" rel="noreferrer">
-                  <Button variation="primary" >
-                        OLX
-                      </Button>
-                      </a>
+                  <a
+                    href="https://www.olx.in/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button variation="primary">OLX</Button>
+                  </a>
                   {/* <Button variation="primary">
                         <GoFileMedia />
                         Please Click a picture of Dustbin
@@ -95,6 +99,7 @@ const ProductJeans = () => {
                   <Heading level={5}>Donate</Heading>
                   <Divider />
                   <Text as="span">Here is a list of NGO's near you</Text>
+                  <Button variation="primary" onClick={getNearbyAreas}>Get nearby NGO</Button>
                 </Flex>
               </Card>
             </ExpanderItem>
@@ -124,9 +129,7 @@ const ProductJeans = () => {
                     If you have Jeans available for recycling,we can generate a
                     pickup for you
                   </Text>
-                  <Button variation="primary">
-                        Generate Pickup
-                      </Button>
+                  <Button variation="primary">Generate Pickup</Button>
                 </Flex>
               </Card>
             </ExpanderItem>
