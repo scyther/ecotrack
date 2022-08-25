@@ -11,6 +11,7 @@ import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
 import awsconfig from "./aws-exports";
 import Homie from "./routes/Homie";
 import AddProduct from "./routes/AddProduct";
+import ProductJeans from "./routes/ProductJeans";
 
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 Amplify.configure(awsconfig);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/product/:productID" element={<Product />} />
         <Route path="/addProduct" element={<AddProduct />} />
+        <Route path="/productJeans" element={<ProductJeans />} />
       </Routes>
     </Router>
   );
