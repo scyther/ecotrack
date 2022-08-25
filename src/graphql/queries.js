@@ -1,6 +1,272 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getPackaging = /* GraphQL */ `
+  query GetPackaging($id: ID!) {
+    getPackaging(id: $id) {
+      id
+      name
+      carbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listPackagings = /* GraphQL */ `
+  query ListPackagings(
+    $filter: ModelPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPackagings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        carbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPackagings = /* GraphQL */ `
+  query SyncPackagings(
+    $filter: ModelPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        carbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getMaterial = /* GraphQL */ `
+  query GetMaterial($id: ID!) {
+    getMaterial(id: $id) {
+      id
+      name
+      carbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listMaterials = /* GraphQL */ `
+  query ListMaterials(
+    $filter: ModelMaterialFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMaterials(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        carbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncMaterials = /* GraphQL */ `
+  query SyncMaterials(
+    $filter: ModelMaterialFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncMaterials(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        carbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getCategories = /* GraphQL */ `
+  query GetCategories($id: ID!) {
+    getCategories(id: $id) {
+      id
+      name
+      ImpactProducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listCategories = /* GraphQL */ `
+  query ListCategories(
+    $filter: ModelCategoriesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCategories = /* GraphQL */ `
+  query SyncCategories(
+    $filter: ModelCategoriesFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCategories(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getImpactProduct = /* GraphQL */ `
+  query GetImpactProduct($id: ID!) {
+    getImpactProduct(id: $id) {
+      id
+      name
+      brand
+      categoriesID
+      materials
+      packaging
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listImpactProducts = /* GraphQL */ `
+  query ListImpactProducts(
+    $filter: ModelImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImpactProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        brand
+        categoriesID
+        materials
+        packaging
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImpactProducts = /* GraphQL */ `
+  query SyncImpactProducts(
+    $filter: ModelImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        brand
+        categoriesID
+        materials
+        packaging
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getLocations = /* GraphQL */ `
   query GetLocations($id: ID!) {
     getLocations(id: $id) {
@@ -150,15 +416,6 @@ export const syncConsumerOptions = /* GraphQL */ `
     }
   }
 `;
-export const getProductID = `
-query getProductID($eq: String) {
-  listProducts(filter: {name: {eq: $eq}}) {
-    items {
-      id
-    }
-  }
-}
-`;
 export const getProduct = /* GraphQL */ `
   query GetProduct($id: ID!) {
     getProduct(id: $id) {
@@ -166,13 +423,15 @@ export const getProduct = /* GraphQL */ `
       name
       description
       ConsumerOptions {
-        items {
-          consumerOptions {
-            name
-            description
-          }
-        }
+        nextToken
+        startedAt
       }
+      consumerOption
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

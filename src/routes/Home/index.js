@@ -3,7 +3,7 @@ import ml5 from "ml5";
 import logo from "../../logo.svg";
 import { Button, Loader, ButtonGroup } from "@aws-amplify/ui-react";
 import { API, graphqlOperation } from "aws-amplify";
-import { getProductID } from "../../graphql/queries";
+import { getProductID } from "../../graphql/customQueries";
 import { useNavigate } from 'react-router-dom'
 import "./Home.css";
 

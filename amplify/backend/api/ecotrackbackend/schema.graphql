@@ -1,3 +1,30 @@
+type Packaging @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  carbonFootprint: Float
+}
+
+type Material @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  carbonFootprint: Float
+}
+
+type Categories @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  ImpactProducts: [ImpactProduct] @hasMany(indexName: "byCategories", fields: ["id"])
+}
+
+type ImpactProduct @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  brand: String
+  categoriesID: ID! @index(name: "byCategories")
+  materials: [AWSJSON]
+  packaging: AWSJSON
+}
+
 type Locations @model @auth(rules: [{allow: public}]) {
   id: ID!
   Product: Product @hasOne

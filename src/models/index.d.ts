@@ -4,6 +4,22 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type PackagingMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type MaterialMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type CategoriesMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type ImpactProductMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type LocationsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -18,6 +34,49 @@ type ConsumerOptionsMetaData = {
 
 type ProductConsumerOptionsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Packaging {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly carbonFootprint?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Packaging, PackagingMetaData>);
+  static copyOf(source: Packaging, mutator: (draft: MutableModel<Packaging, PackagingMetaData>) => MutableModel<Packaging, PackagingMetaData> | void): Packaging;
+}
+
+export declare class Material {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly carbonFootprint?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Material, MaterialMetaData>);
+  static copyOf(source: Material, mutator: (draft: MutableModel<Material, MaterialMetaData>) => MutableModel<Material, MaterialMetaData> | void): Material;
+}
+
+export declare class Categories {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly ImpactProducts?: (ImpactProduct | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Categories, CategoriesMetaData>);
+  static copyOf(source: Categories, mutator: (draft: MutableModel<Categories, CategoriesMetaData>) => MutableModel<Categories, CategoriesMetaData> | void): Categories;
+}
+
+export declare class ImpactProduct {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly brand?: string | null;
+  readonly categoriesID: string;
+  readonly materials?: (string | null)[] | null;
+  readonly packaging?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<ImpactProduct, ImpactProductMetaData>);
+  static copyOf(source: ImpactProduct, mutator: (draft: MutableModel<ImpactProduct, ImpactProductMetaData>) => MutableModel<ImpactProduct, ImpactProductMetaData> | void): ImpactProduct;
 }
 
 export declare class Locations {
