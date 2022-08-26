@@ -13,8 +13,8 @@ import { listCategories, listMaterials } from "../../graphql/queries";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 // import { listQualities } from "../../graphql/customQueries";
 import pincode from "pincode-distance";
-import { createImpactProduct } from "../../graphql/customQueries";
-import { nanoid } from "nanoid";
+import { createImpactProduct } from "../../graphql/mutations";
+// import { nanoid } from "nanoid";
 
 const AddProduct = () => {
   const [fetchedMaterialNames, setFetchedMaterialNames] = useState([]);

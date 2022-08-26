@@ -22,9 +22,9 @@ type ImpactProduct @model @auth(rules: [{allow: public}]) {
   name: String
   brand: String
   totalCarbonFootprint: Float
-  materialsUsed: [AWSJSON]
-  packagingUsed: AWSJSON
-  logistics: AWSJSON
+  materialsUsed: String
+  packagingUsed: String
+  logistics: String
   waterConsumption: Float
   energyUsed: String
   date: String

@@ -190,14 +190,6 @@ export const createImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriess {
-        nextToken
-        startedAt
-      }
-      Packagings {
-        nextToken
-        startedAt
-      }
       totalCarbonFootprint
       createdAt
       updatedAt

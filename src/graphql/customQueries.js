@@ -19,7 +19,7 @@ query ListQualities($eq: String = "") {
 `;
 
 export const createImpactProduct = `
-mutation MyMutation($brand: String = "", $date: String = "", $energyFP: Float = 1.5, $energyUsed: String = "", $logistics: String = "", $materialsUsed: String = "", $name: String = "", $packagingUsed: String = "", $totalCarbonFootprint: Float = 1.5, $waterConsumption: Float = 1.5) {
+mutation MyMutation($brand: String , $date: String , $energyFP: Float , $energyUsed: String , $logistics: String , $materialsUsed: String , $name: String , $packagingUsed: String , $totalCarbonFootprint: Float , $waterConsumption: Float ) {
   createImpactProduct(input: {brand: $brand, date: $date, energyFP: $energyFP, energyUsed: $energyUsed, logistics: $logistics, materialsUsed: $materialsUsed, name: $name, packagingUsed: $packagingUsed, totalCarbonFootprint: $totalCarbonFootprint, waterConsumption: $waterConsumption}) {
     brand
     name
@@ -27,3 +27,24 @@ mutation MyMutation($brand: String = "", $date: String = "", $energyFP: Float = 
     waterConsumption
   }
 }`;
+
+export const getProducts = `
+query getProducts {
+  listImpactProducts {
+    items {
+      name
+    }
+  }
+}
+`
+export const getDateswithValues=`
+query getDateswithValues($name: ModelStringInput) {
+  listImpactProducts(filter: {name: $name}) {
+    items {
+      date
+      totalCarbonFootprint
+      waterConsumption
+    }
+  }
+}
+`
