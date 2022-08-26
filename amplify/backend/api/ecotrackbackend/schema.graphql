@@ -2,35 +2,42 @@ type Packaging @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   carbonFootprint: Float
+  quality: String
 }
 
 type Material @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   carbonFootprint: Float
+  quality: String
 }
 
 type Categories @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
-  ImpactProducts: [ImpactProduct] @hasMany(indexName: "byCategories", fields: ["id"])
 }
 
 type ImpactProduct @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   brand: String
-  categoriesID: ID! @index(name: "byCategories")
-  materials: [AWSJSON]
-  packaging: AWSJSON
+  totalCarbonFootprint: Float
+  materialsUsed: String
+  packagingUsed: String
+  logistics: String
+  waterConsumption: Float
+  energyUsed: String
+  date: String
+  energyFP: Float
 }
 
 type Locations @model @auth(rules: [{allow: public}]) {
   id: ID!
   Product: Product @hasOne
   geoCordinates: String
-  image: AWSURL
+  PinCode: Int
   picked: Boolean
+  address: String
 }
 
 type ConsumerOptions @model @auth(rules: [{allow: public}, {allow: groups, groups: ["guest"], operations: [read]}]) {
@@ -45,6 +52,5 @@ type Product @model @auth(rules: [{allow: public}, {allow: groups, groups: ["gue
   name: String!
   description: String
   ConsumerOptions: [ConsumerOptions] @manyToMany(relationName: "ProductConsumerOptions")
-  consumerOption: [AWSJSON!]!
 }
  

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router";
 import {
   Card,
@@ -6,7 +6,6 @@ import {
   Flex,
   Heading,
   Image,
-  Loader,
   Text,
   ScrollView,
   Expander,

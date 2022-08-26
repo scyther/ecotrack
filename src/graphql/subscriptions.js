@@ -7,6 +7,11 @@ export const onCreatePackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -21,6 +26,11 @@ export const onUpdatePackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -35,6 +45,11 @@ export const onDeletePackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -49,6 +64,7 @@ export const onCreateMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -63,6 +79,7 @@ export const onUpdateMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -77,6 +94,7 @@ export const onDeleteMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -142,9 +160,15 @@ export const onCreateImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -159,9 +183,15 @@ export const onUpdateImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -176,9 +206,15 @@ export const onDeleteImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -195,7 +231,6 @@ export const onCreateLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -203,8 +238,9 @@ export const onCreateLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -222,7 +258,6 @@ export const onUpdateLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -230,8 +265,9 @@ export const onUpdateLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -249,7 +285,6 @@ export const onDeleteLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -257,8 +292,9 @@ export const onDeleteLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -332,7 +368,6 @@ export const onCreateProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -351,7 +386,6 @@ export const onUpdateProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -370,7 +404,216 @@ export const onDeleteProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateImpactProductPackaging = /* GraphQL */ `
+  subscription OnCreateImpactProductPackaging {
+    onCreateImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateImpactProductPackaging = /* GraphQL */ `
+  subscription OnUpdateImpactProductPackaging {
+    onUpdateImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteImpactProductPackaging = /* GraphQL */ `
+  subscription OnDeleteImpactProductPackaging {
+    onDeleteImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnCreateCategoriesImpactProduct {
+    onCreateCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnUpdateCategoriesImpactProduct {
+    onUpdateCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnDeleteCategoriesImpactProduct {
+    onDeleteCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
@@ -399,7 +642,6 @@ export const onCreateProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -434,7 +676,6 @@ export const onUpdateProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -469,7 +710,6 @@ export const onDeleteProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version

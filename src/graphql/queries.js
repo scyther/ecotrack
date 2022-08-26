@@ -7,6 +7,11 @@ export const getPackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -26,6 +31,7 @@ export const listPackagings = /* GraphQL */ `
         id
         name
         carbonFootprint
+        quality
         createdAt
         updatedAt
         _version
@@ -54,6 +60,7 @@ export const syncPackagings = /* GraphQL */ `
         id
         name
         carbonFootprint
+        quality
         createdAt
         updatedAt
         _version
@@ -71,6 +78,7 @@ export const getMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -90,6 +98,7 @@ export const listMaterials = /* GraphQL */ `
         id
         name
         carbonFootprint
+        quality
         createdAt
         updatedAt
         _version
@@ -118,6 +127,7 @@ export const syncMaterials = /* GraphQL */ `
         id
         name
         carbonFootprint
+        quality
         createdAt
         updatedAt
         _version
@@ -200,9 +210,15 @@ export const getImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -222,9 +238,7 @@ export const listImpactProducts = /* GraphQL */ `
         id
         name
         brand
-        categoriesID
-        materials
-        packaging
+        totalCarbonFootprint
         createdAt
         updatedAt
         _version
@@ -253,9 +267,7 @@ export const syncImpactProducts = /* GraphQL */ `
         id
         name
         brand
-        categoriesID
-        materials
-        packaging
+        totalCarbonFootprint
         createdAt
         updatedAt
         _version
@@ -275,7 +287,6 @@ export const getLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -283,8 +294,9 @@ export const getLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -304,8 +316,9 @@ export const listLocations = /* GraphQL */ `
       items {
         id
         geoCordinates
-        image
+        PinCode
         picked
+        address
         createdAt
         updatedAt
         _version
@@ -334,8 +347,9 @@ export const syncLocations = /* GraphQL */ `
       items {
         id
         geoCordinates
-        image
+        PinCode
         picked
+        address
         createdAt
         updatedAt
         _version
@@ -426,7 +440,6 @@ export const getProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -446,7 +459,6 @@ export const listProducts = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -475,7 +487,184 @@ export const syncProducts = /* GraphQL */ `
         id
         name
         description
-        consumerOption
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getImpactProductPackaging = /* GraphQL */ `
+  query GetImpactProductPackaging($id: ID!) {
+    getImpactProductPackaging(id: $id) {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listImpactProductPackagings = /* GraphQL */ `
+  query ListImpactProductPackagings(
+    $filter: ModelImpactProductPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImpactProductPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        packagingID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImpactProductPackagings = /* GraphQL */ `
+  query SyncImpactProductPackagings(
+    $filter: ModelImpactProductPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImpactProductPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        packagingID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getCategoriesImpactProduct = /* GraphQL */ `
+  query GetCategoriesImpactProduct($id: ID!) {
+    getCategoriesImpactProduct(id: $id) {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listCategoriesImpactProducts = /* GraphQL */ `
+  query ListCategoriesImpactProducts(
+    $filter: ModelCategoriesImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCategoriesImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        categoriesID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCategoriesImpactProducts = /* GraphQL */ `
+  query SyncCategoriesImpactProducts(
+    $filter: ModelCategoriesImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCategoriesImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        categoriesID
+        impactProductID
         createdAt
         updatedAt
         _version
@@ -507,7 +696,6 @@ export const getProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version

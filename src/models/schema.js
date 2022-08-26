@@ -24,6 +24,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "quality": {
+                    "name": "quality",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -90,6 +97,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "quality": {
+                    "name": "quality",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -148,20 +162,6 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
-                },
-                "ImpactProducts": {
-                    "name": "ImpactProducts",
-                    "isArray": true,
-                    "type": {
-                        "model": "ImpactProduct"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "categoriesID"
-                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -229,25 +229,59 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "categoriesID": {
-                    "name": "categoriesID",
+                "totalCarbonFootprint": {
+                    "name": "totalCarbonFootprint",
                     "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
+                    "type": "Float",
+                    "isRequired": false,
                     "attributes": []
                 },
-                "materials": {
-                    "name": "materials",
-                    "isArray": true,
-                    "type": "AWSJSON",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "packaging": {
-                    "name": "packaging",
+                "materialsUsed": {
+                    "name": "materialsUsed",
                     "isArray": false,
-                    "type": "AWSJSON",
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "packagingUsed": {
+                    "name": "packagingUsed",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "logistics": {
+                    "name": "logistics",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "waterConsumption": {
+                    "name": "waterConsumption",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "energyUsed": {
+                    "name": "energyUsed",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "date": {
+                    "name": "date",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "energyFP": {
+                    "name": "energyFP",
+                    "isArray": false,
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -274,15 +308,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byCategories",
-                        "fields": [
-                            "categoriesID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -333,10 +358,10 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "image": {
-                    "name": "image",
+                "PinCode": {
+                    "name": "PinCode",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -344,6 +369,13 @@ export const schema = {
                     "name": "picked",
                     "isArray": false,
                     "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "address": {
+                    "name": "address",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -433,14 +465,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "product"
                     }
-                },
-                "consumerOption": {
-                    "name": "consumerOption",
-                    "isArray": true,
-                    "type": "AWSJSON",
-                    "isRequired": true,
-                    "attributes": [],
-                    "isArrayNullable": false
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -669,5 +693,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "12ddbd13812359dedc1bb49629f49738"
+    "version": "d4aff22da8eeee031da0fed189af8a37"
 };

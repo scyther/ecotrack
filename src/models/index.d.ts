@@ -40,6 +40,7 @@ export declare class Packaging {
   readonly id: string;
   readonly name?: string | null;
   readonly carbonFootprint?: number | null;
+  readonly quality?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Packaging, PackagingMetaData>);
@@ -50,6 +51,7 @@ export declare class Material {
   readonly id: string;
   readonly name?: string | null;
   readonly carbonFootprint?: number | null;
+  readonly quality?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Material, MaterialMetaData>);
@@ -59,7 +61,6 @@ export declare class Material {
 export declare class Categories {
   readonly id: string;
   readonly name?: string | null;
-  readonly ImpactProducts?: (ImpactProduct | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Categories, CategoriesMetaData>);
@@ -70,9 +71,14 @@ export declare class ImpactProduct {
   readonly id: string;
   readonly name?: string | null;
   readonly brand?: string | null;
-  readonly categoriesID: string;
-  readonly materials?: (string | null)[] | null;
-  readonly packaging?: string | null;
+  readonly totalCarbonFootprint?: number | null;
+  readonly materialsUsed?: string | null;
+  readonly packagingUsed?: string | null;
+  readonly logistics?: string | null;
+  readonly waterConsumption?: number | null;
+  readonly energyUsed?: string | null;
+  readonly date?: string | null;
+  readonly energyFP?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<ImpactProduct, ImpactProductMetaData>);
@@ -83,8 +89,9 @@ export declare class Locations {
   readonly id: string;
   readonly Product?: Product | null;
   readonly geoCordinates?: string | null;
-  readonly image?: string | null;
+  readonly PinCode?: number | null;
   readonly picked?: boolean | null;
+  readonly address?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly locationsProductId?: string | null;
@@ -97,7 +104,6 @@ export declare class Product {
   readonly name: string;
   readonly description?: string | null;
   readonly ConsumerOptions?: (ProductConsumerOptions | null)[] | null;
-  readonly consumerOption: string[];
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Product, ProductMetaData>);

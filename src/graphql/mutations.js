@@ -10,6 +10,11 @@ export const createPackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -27,6 +32,11 @@ export const updatePackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -44,6 +54,11 @@ export const deletePackaging = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -61,6 +76,7 @@ export const createMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -78,6 +94,7 @@ export const updateMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -95,6 +112,7 @@ export const deleteMaterial = /* GraphQL */ `
       id
       name
       carbonFootprint
+      quality
       createdAt
       updatedAt
       _version
@@ -172,9 +190,15 @@ export const createImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -192,9 +216,15 @@ export const updateImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -212,9 +242,15 @@ export const deleteImpactProduct = /* GraphQL */ `
       id
       name
       brand
-      categoriesID
-      materials
-      packaging
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
       createdAt
       updatedAt
       _version
@@ -234,7 +270,6 @@ export const createLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -242,8 +277,9 @@ export const createLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -264,7 +300,6 @@ export const updateLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -272,8 +307,9 @@ export const updateLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -294,7 +330,6 @@ export const deleteLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -302,8 +337,9 @@ export const deleteLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -389,7 +425,6 @@ export const createProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -411,7 +446,6 @@ export const updateProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -433,7 +467,234 @@ export const deleteProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createImpactProductPackaging = /* GraphQL */ `
+  mutation CreateImpactProductPackaging(
+    $input: CreateImpactProductPackagingInput!
+    $condition: ModelImpactProductPackagingConditionInput
+  ) {
+    createImpactProductPackaging(input: $input, condition: $condition) {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateImpactProductPackaging = /* GraphQL */ `
+  mutation UpdateImpactProductPackaging(
+    $input: UpdateImpactProductPackagingInput!
+    $condition: ModelImpactProductPackagingConditionInput
+  ) {
+    updateImpactProductPackaging(input: $input, condition: $condition) {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteImpactProductPackaging = /* GraphQL */ `
+  mutation DeleteImpactProductPackaging(
+    $input: DeleteImpactProductPackagingInput!
+    $condition: ModelImpactProductPackagingConditionInput
+  ) {
+    deleteImpactProductPackaging(input: $input, condition: $condition) {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createCategoriesImpactProduct = /* GraphQL */ `
+  mutation CreateCategoriesImpactProduct(
+    $input: CreateCategoriesImpactProductInput!
+    $condition: ModelCategoriesImpactProductConditionInput
+  ) {
+    createCategoriesImpactProduct(input: $input, condition: $condition) {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateCategoriesImpactProduct = /* GraphQL */ `
+  mutation UpdateCategoriesImpactProduct(
+    $input: UpdateCategoriesImpactProductInput!
+    $condition: ModelCategoriesImpactProductConditionInput
+  ) {
+    updateCategoriesImpactProduct(input: $input, condition: $condition) {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteCategoriesImpactProduct = /* GraphQL */ `
+  mutation DeleteCategoriesImpactProduct(
+    $input: DeleteCategoriesImpactProductInput!
+    $condition: ModelCategoriesImpactProductConditionInput
+  ) {
+    deleteCategoriesImpactProduct(input: $input, condition: $condition) {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
@@ -465,7 +726,6 @@ export const createProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -503,7 +763,6 @@ export const updateProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -541,7 +800,6 @@ export const deleteProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
