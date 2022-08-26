@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ml5 from "ml5";
 import logo from "../../logo.svg";
 import { Button, Loader, ButtonGroup } from "@aws-amplify/ui-react";
-import { API, graphqlOperation } from "aws-amplify";
-import { getProductID } from "../../graphql/queries";
+// import { API, graphqlOperation } from "aws-amplify";
+// import { getProductID } from "../../graphql/customQueries";
 import { useNavigate } from 'react-router-dom'
 import "./Home.css";
 
@@ -21,7 +21,7 @@ const Homie = () => {
     image.src = URL.createObjectURL(file);
     setimageURL(image.src)
     const classifier = ml5.imageClassifier(
-      "https://teachablemachine.withgoogle.com/models/kjbL88QHM/",
+      "https://teachablemachine.withgoogle.com/models/2h5AEDbDm/",
       () => {
         console.log("Model Loaded");
       }
@@ -38,13 +38,13 @@ const Homie = () => {
   };
 
   const redirectToProductID = async (e) => {
-    let productName = e.target.name;
-    console.log(e.target.name);
-    const apiData = await API.graphql(
-      graphqlOperation(getProductID, { eq: productName })
-    );
-    let productID = apiData.data.listProducts.items[0].id;
-    navigate(`/product/${productID}`,{state: {imageURL: imageURL}})
+    // let productName = e.target.name;
+    // console.log(e.target.name);
+    // const apiData = await API.graphql(
+    //   graphqlOperation(getProductID, { eq: productName })
+    // );
+    // let productID = apiData.data.listProducts.items[0].id;
+    navigate(`/productJeans`,{state: {imageURL: imageURL}})
   };
 
   return (

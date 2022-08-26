@@ -1,6 +1,228 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreatePackaging = /* GraphQL */ `
+  subscription OnCreatePackaging {
+    onCreatePackaging {
+      id
+      name
+      carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdatePackaging = /* GraphQL */ `
+  subscription OnUpdatePackaging {
+    onUpdatePackaging {
+      id
+      name
+      carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeletePackaging = /* GraphQL */ `
+  subscription OnDeletePackaging {
+    onDeletePackaging {
+      id
+      name
+      carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateMaterial = /* GraphQL */ `
+  subscription OnCreateMaterial {
+    onCreateMaterial {
+      id
+      name
+      carbonFootprint
+      quality
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateMaterial = /* GraphQL */ `
+  subscription OnUpdateMaterial {
+    onUpdateMaterial {
+      id
+      name
+      carbonFootprint
+      quality
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteMaterial = /* GraphQL */ `
+  subscription OnDeleteMaterial {
+    onDeleteMaterial {
+      id
+      name
+      carbonFootprint
+      quality
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateCategories = /* GraphQL */ `
+  subscription OnCreateCategories {
+    onCreateCategories {
+      id
+      name
+      ImpactProducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateCategories = /* GraphQL */ `
+  subscription OnUpdateCategories {
+    onUpdateCategories {
+      id
+      name
+      ImpactProducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteCategories = /* GraphQL */ `
+  subscription OnDeleteCategories {
+    onDeleteCategories {
+      id
+      name
+      ImpactProducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateImpactProduct = /* GraphQL */ `
+  subscription OnCreateImpactProduct {
+    onCreateImpactProduct {
+      id
+      name
+      brand
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateImpactProduct = /* GraphQL */ `
+  subscription OnUpdateImpactProduct {
+    onUpdateImpactProduct {
+      id
+      name
+      brand
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteImpactProduct = /* GraphQL */ `
+  subscription OnDeleteImpactProduct {
+    onDeleteImpactProduct {
+      id
+      name
+      brand
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const onCreateLocations = /* GraphQL */ `
   subscription OnCreateLocations {
     onCreateLocations {
@@ -9,7 +231,6 @@ export const onCreateLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -17,8 +238,9 @@ export const onCreateLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -36,7 +258,6 @@ export const onUpdateLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -44,8 +265,9 @@ export const onUpdateLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -63,7 +285,6 @@ export const onDeleteLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -71,8 +292,9 @@ export const onDeleteLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -146,7 +368,6 @@ export const onCreateProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -165,7 +386,6 @@ export const onUpdateProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
       createdAt
       updatedAt
       _version
@@ -184,7 +404,216 @@ export const onDeleteProduct = /* GraphQL */ `
         nextToken
         startedAt
       }
-      consumerOption
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateImpactProductPackaging = /* GraphQL */ `
+  subscription OnCreateImpactProductPackaging {
+    onCreateImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateImpactProductPackaging = /* GraphQL */ `
+  subscription OnUpdateImpactProductPackaging {
+    onUpdateImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteImpactProductPackaging = /* GraphQL */ `
+  subscription OnDeleteImpactProductPackaging {
+    onDeleteImpactProductPackaging {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnCreateCategoriesImpactProduct {
+    onCreateCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnUpdateCategoriesImpactProduct {
+    onUpdateCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteCategoriesImpactProduct = /* GraphQL */ `
+  subscription OnDeleteCategoriesImpactProduct {
+    onDeleteCategoriesImpactProduct {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
@@ -213,7 +642,6 @@ export const onCreateProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -248,7 +676,6 @@ export const onUpdateProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -283,7 +710,6 @@ export const onDeleteProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version

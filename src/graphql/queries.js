@@ -1,6 +1,284 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getPackaging = /* GraphQL */ `
+  query GetPackaging($id: ID!) {
+    getPackaging(id: $id) {
+      id
+      name
+      carbonFootprint
+      quality
+      impactproducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listPackagings = /* GraphQL */ `
+  query ListPackagings(
+    $filter: ModelPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPackagings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPackagings = /* GraphQL */ `
+  query SyncPackagings(
+    $filter: ModelPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getMaterial = /* GraphQL */ `
+  query GetMaterial($id: ID!) {
+    getMaterial(id: $id) {
+      id
+      name
+      carbonFootprint
+      quality
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listMaterials = /* GraphQL */ `
+  query ListMaterials(
+    $filter: ModelMaterialFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMaterials(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncMaterials = /* GraphQL */ `
+  query SyncMaterials(
+    $filter: ModelMaterialFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncMaterials(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getCategories = /* GraphQL */ `
+  query GetCategories($id: ID!) {
+    getCategories(id: $id) {
+      id
+      name
+      ImpactProducts {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listCategories = /* GraphQL */ `
+  query ListCategories(
+    $filter: ModelCategoriesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCategories = /* GraphQL */ `
+  query SyncCategories(
+    $filter: ModelCategoriesFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCategories(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getImpactProduct = /* GraphQL */ `
+  query GetImpactProduct($id: ID!) {
+    getImpactProduct(id: $id) {
+      id
+      name
+      brand
+      categoriess {
+        nextToken
+        startedAt
+      }
+      Packagings {
+        nextToken
+        startedAt
+      }
+      totalCarbonFootprint
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listImpactProducts = /* GraphQL */ `
+  query ListImpactProducts(
+    $filter: ModelImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImpactProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImpactProducts = /* GraphQL */ `
+  query SyncImpactProducts(
+    $filter: ModelImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getLocations = /* GraphQL */ `
   query GetLocations($id: ID!) {
     getLocations(id: $id) {
@@ -9,7 +287,6 @@ export const getLocations = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -17,8 +294,9 @@ export const getLocations = /* GraphQL */ `
         _lastChangedAt
       }
       geoCordinates
-      image
+      PinCode
       picked
+      address
       createdAt
       updatedAt
       _version
@@ -38,8 +316,9 @@ export const listLocations = /* GraphQL */ `
       items {
         id
         geoCordinates
-        image
+        PinCode
         picked
+        address
         createdAt
         updatedAt
         _version
@@ -68,8 +347,9 @@ export const syncLocations = /* GraphQL */ `
       items {
         id
         geoCordinates
-        image
+        PinCode
         picked
+        address
         createdAt
         updatedAt
         _version
@@ -150,15 +430,6 @@ export const syncConsumerOptions = /* GraphQL */ `
     }
   }
 `;
-export const getProductID = `
-query getProductID($eq: String) {
-  listProducts(filter: {name: {eq: $eq}}) {
-    items {
-      id
-    }
-  }
-}
-`;
 export const getProduct = /* GraphQL */ `
   query GetProduct($id: ID!) {
     getProduct(id: $id) {
@@ -166,13 +437,14 @@ export const getProduct = /* GraphQL */ `
       name
       description
       ConsumerOptions {
-        items {
-          consumerOptions {
-            name
-            description
-          }
-        }
+        nextToken
+        startedAt
       }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -187,7 +459,6 @@ export const listProducts = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
@@ -216,7 +487,184 @@ export const syncProducts = /* GraphQL */ `
         id
         name
         description
-        consumerOption
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getImpactProductPackaging = /* GraphQL */ `
+  query GetImpactProductPackaging($id: ID!) {
+    getImpactProductPackaging(id: $id) {
+      id
+      packagingID
+      impactProductID
+      packaging {
+        id
+        name
+        carbonFootprint
+        quality
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listImpactProductPackagings = /* GraphQL */ `
+  query ListImpactProductPackagings(
+    $filter: ModelImpactProductPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listImpactProductPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        packagingID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncImpactProductPackagings = /* GraphQL */ `
+  query SyncImpactProductPackagings(
+    $filter: ModelImpactProductPackagingFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncImpactProductPackagings(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        packagingID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getCategoriesImpactProduct = /* GraphQL */ `
+  query GetCategoriesImpactProduct($id: ID!) {
+    getCategoriesImpactProduct(id: $id) {
+      id
+      categoriesID
+      impactProductID
+      categories {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      impactProduct {
+        id
+        name
+        brand
+        totalCarbonFootprint
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listCategoriesImpactProducts = /* GraphQL */ `
+  query ListCategoriesImpactProducts(
+    $filter: ModelCategoriesImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCategoriesImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        categoriesID
+        impactProductID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCategoriesImpactProducts = /* GraphQL */ `
+  query SyncCategoriesImpactProducts(
+    $filter: ModelCategoriesImpactProductFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCategoriesImpactProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        categoriesID
+        impactProductID
         createdAt
         updatedAt
         _version
@@ -248,7 +696,6 @@ export const getProductConsumerOptions = /* GraphQL */ `
         id
         name
         description
-        consumerOption
         createdAt
         updatedAt
         _version
