@@ -72,7 +72,7 @@ export declare class ImpactProduct {
   readonly name?: string | null;
   readonly brand?: string | null;
   readonly totalCarbonFootprint?: number | null;
-  readonly materialsUsed?: string | null;
+  readonly materialsUsed?: (string | null)[] | null;
   readonly packagingUsed?: string | null;
   readonly logistics?: string | null;
   readonly waterConsumption?: number | null;

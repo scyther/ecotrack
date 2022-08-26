@@ -238,22 +238,23 @@ export const schema = {
                 },
                 "materialsUsed": {
                     "name": "materialsUsed",
-                    "isArray": false,
-                    "type": "String",
+                    "isArray": true,
+                    "type": "AWSJSON",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "packagingUsed": {
                     "name": "packagingUsed",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSJSON",
                     "isRequired": false,
                     "attributes": []
                 },
                 "logistics": {
                     "name": "logistics",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSJSON",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -693,5 +694,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "d4aff22da8eeee031da0fed189af8a37"
+    "version": "0b7c4d1db830efe25fa1263ebc8cbf29"
 };

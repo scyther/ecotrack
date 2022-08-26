@@ -158,13 +158,11 @@ const AddProduct = () => {
 
   const handleSaveProduct = async () => {
     const dataToSave = {
-      id: nanoid(),
       name: product?.name,
       energyUsed: product?.energyUsed,
       brand: product?.brand,
       logistics: JSON.stringify(logistics),
       materialsUsed: JSON.stringify(materials),
-    
       packagingUsed: JSON.stringify(packagingUsed),
       totalCarbonFootprint: product?.totalCF,
       waterConsumption: parseFloat(product?.waterConsumed),
